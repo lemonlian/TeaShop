@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="utf-8">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Free Bootstrap Themes by Html5xCss3 dot com - Free Responsive Html5 Templates">
+    <meta name="author" content="#">
+	
+    <title>Vintage | Free Bootstrap Themes</title>
+	
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	
+	<!-- Custom CSS -->
+	<link href="css/style.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/lightbox.css">
+	
+	<!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+	
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+    	.person-info{
+    		margin-top: 50px;
+    	}
+    </style>
+</head>
+<body class="single-page">
+	<div class="wrap-body">
+		<!-- Intro -->
+		<div id="intro">
+			<span class="line-1">↑</span>
+			<span class="line-2" style="font-family: hakuyoxingshu7000;">蒙顶山茶</span>
+			<span class="line-3" style="font-family: 华文行楷;font-size: 20px; font-weight: bold;">悠悠匠心</span>
+			<span class="line-4" ><a href="#">蜀土</a><a href="#">圣茶</a></span>
+		</div>
+
+		<header id="page-header">
+			<!--Navigation-->
+			<nav id="menu" class="navbar">
+				<div class="container">
+					<div class="row">
+					<div class="navbar-header"><span id="heading" class="visible-xs">Categories</span>
+					  <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
+					</div>
+					<div class="collapse navbar-collapse navbar-ex1-collapse">
+						<ul class="nav navbar-nav">
+							<li><a href="index.html">关于我们</a></li>
+							<li class="active"><a href="single.html">个人中心</a></li>
+							<li><a href="gallery.html">商品列表</a></li>
+							<li><a href="contact.html">联系我们</a></li>
+						</ul>
+					</div>
+					</div>
+				</div>
+			</nav>
+		</header>
+		
+		<!-- /////////////////////////////////////////Content -->
+		<div id="page-content" class="container">
+			<!-- 用户界面 -->
+			<div id="userView">
+				<!-- 个人信息 -->
+				<div class="panel panel-info person-info">
+					<div class="panel-heading">个人信息</div>
+					<div class="panel-body">
+						<from>
+							<div class="form-group">
+								<label>用户ID:</label>
+								<span id="userId"></span>
+							</div>
+							<div class="form-group">
+								<label>用户名:</label>
+								<span id="userName"></span>
+							</div>
+							<div class="form-group">
+								<label>余额:</label>
+								<span id="leftMoney"></span>￥
+								<button type="button" class="btn btn-primary" id="charge" data-toggle="modal" data-target="#chargeModal">充值</button>
+							</div>
+						</from>
+					</div>
+				</div>
+				<!-- 购物车 -->
+				<div class="panel panel-info person-info">
+					<div class="panel-heading">购物车</div>
+					<div class="panel-body">
+						<table class="table table-hover" id="shopCart">
+							<tr>
+								<th>订单号</th>
+								<th>商品ID</th>
+								<th>数量</th>
+								<th>价格</th>
+								<th>操作</th>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<!-- 订单 -->
+				<div class="panel panel-info person-info">
+					<div class="panel-heading">订单列表</div>
+					<div class="panel-body">
+						<table class="table table-hover" id="boughtOrder">
+							<tr>
+								<th>订单号</th>
+								<th>商品ID</th>
+								<th>数量</th>
+								<th>价格</th>
+								<th>状态</th>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			<!-- 管理员界面 -->
+			<div class="panel panel-info person-info" id="managerView">
+				<div class="panel-heading">已成交订单</div>
+				<div class="panel-body">
+					<table class="table table-hover" id="dealedOrder">
+						<tbody>
+							<tr>
+								<th>订单号</th>
+								<th>客户ID</th>
+								<th>商品ID</th>
+								<th>数量</th>
+								<th>价格</th>
+								<th>状态</th>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 充值弹窗 -->
+		<div class="modal" id="chargeModal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span data-dismiss="modal">&times;</span></button>
+						<h4 class="modal-title">充值</h4>
+					</div>
+					<div class="modal-body">
+						<form>
+							<div class="form-group">
+								<label for="money">充值金额:</label>
+								<input type="text" class="form-control" id="money" placeholder="请输入数字">
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-primary" id="checkCharge">确认</button>
+						<button class="btn btn-default" data-dismiss="modal">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 修改弹窗 -->
+		<div class="modal" id="modefiedModal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span data-dismiss="modal">&times;</span></button>
+						<h4 class="modal-title">修改数量</h4>
+					</div>
+					<div class="modal-body">
+						<form>
+							<div class="form-group">
+								<label>数量</label>
+								<select class="form-control">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+									<option value="10">10</option>
+								</select>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-primary" id="checkModefied">确认</button>
+						<button class="btn btn-default" data-dismiss="modal">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer id="page-footer" class="footer-contact">
+			<div class="wrap-footer container">
+				<div class="row">
+					<div class="flex-box no-gutter">
+						<!-- Map and address -->
+						<div class="col-lg-12">
+							<div class="contact-info">
+								<!-- Show Info Button -->
+								<a href="#" class="show-info-link"><i class="fa fa-info"></i> Show info</a>
+								<div id="map" style="height: 550px;"></div>
+								<address class="contact-info-wrapper">
+									<ul class="list-unstyled">
+										<!-- Address -->
+										
+								</address>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer><!-- Footer -->
+	</div><!-- .wrap-body -->
+	
+	
+	<!-- jQuery and Plugin-->
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/main.js"></script>
+	<!-- Bootstrap JS -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Google Map -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7V-mAjEzzmP6PCQda8To0ZW_o3UOCVCE&callback=initMap" async defer></script>
+	<!-- Logo -->
+	<script src="js/arctext.min.js"></script>
+	<script type="text/javascript" src="js/CookieUtil.js"></script>
+	<script type="text/javascript" src="js/single.js"></script>
+	<script>
+		$(document).ready(function() {
+		  $(".line-2").arctext({radius: 400});
+		});
+	</script>
+	
+</body>
+</html>

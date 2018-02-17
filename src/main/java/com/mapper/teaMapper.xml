@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.TeaDao" >
+
+  <insert id="addTea" parameterType="com.bean.Tea" >
+    insert into tea (tea_name, tea_price,
+    tea_photo, tea_intro, tea_num)
+    values (#{teaName,jdbcType=VARCHAR}, #{teaPrice,jdbcType=DOUBLE},
+    #{teaPhoto,jdbcType=VARCHAR}, #{teaIntro,jdbcType=VARCHAR},
+    #{teaNum,jdbcType=INTEGER})
+  </insert>
+
+  <delete id="deleteTeaByID">
+    DELETE FROM tea WHERE tea_id=#{teaId};
+  </delete>
+
+  <update id="updateTeaDetailed" parameterType="com.bean.Tea">
+    UPDATE tea SET
+    tea_name=#{teaName},tea_price=#{teaPrice},tea_photo=#{teaPhoto},tea_intro=#{teaIntro},tea_num=#{teaNum}
+    WHERE tea_id=#{teaId};
+  </update>
+
+  <update id="updateTeaState">
+    UPDATE tea SET tea_state=#{teaState} WHERE tea_id=#{teaId}
+  </update>
+
+  <update id="updateTeaNum">
+    UPDATE tea
+    SET tea_num=tea_num-#{buyNum}
+    WHERE tea_id=#{teaId}
+  </update>
+
+  <select id="getTeaDetailed_all" resultType="Map">
+    SELECT * FROM tea;
+  </select>
+
+  <select id="getTeaDetailedByState" resultType="Map">
+    SELECT * FROM tea WHERE tea_state=1;
+  </select>
+
+  <select id="getTeaDetailedByID" resultType="Map">
+    SELECT * FROM tea WHERE tea_id=#{teaId}
+  </select>
+</mapper>

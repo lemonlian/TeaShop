@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="com.dao.OrderDao">
+
+    <insert id="createOrder">
+        INSERT INTO teaOrder(o_tea_id,o_user_id,tea_buy_num,order_price)
+        VALUES (#{teaId},#{userId},#{teaBuyNum},#{teaBuyNum}*(SELECT tea_price FROM tea WHERE tea_id=#{teaId}));
+    </insert>
+
+
+    <delete id="deleteOrder">
+        DELETE FROM teaOrder WHERE order_id=#{orderId};
+    </delete>
+
+    <update id="updateOrder">
+        UPDATE teaOrder
+        SET tea_buy_num=#{teaBuyNum},order_price=#{teaBuyNum}*(SELECT tea_price teaOrder FROM tea WHERE tea_id=o_tea_id)
+        WHERE order_id=#{orderId};
+    </update>
+
+    <update id="updateOrderState">
+        UPDATE teaOrder
+        SET order_state=#{orderState}
+        WHERE order_id=#{orderId}
+    </update>
+
+    <select id="getAllOrderDetail" resultType="Map">
+        SELECT * FROM teaOrder WHERE order_state=1;
+    </select>
+
+    <select id="getOrderNotDealByUserId" resultType="Map">
+        SELECT * FROM teaOrder WHERE o_user_id=#{userId} AND order_state=0;
+    </select>
+
+    <select id="getOrderDealByUserId" resultType="Map">
+        SELECT * FROM teaOrder WHERE o_user_id=#{userId} AND order_state=1;
+    </select>
+
+    <select id="getOrderDetailedById" resultType="com.bean.Order">
+        SELECT order_id orderId,o_user_id userId,o_tea_id teaId,order_state orderState,tea_buy_num teaBuyNum,order_price orderPrice
+        FROM teaOrder
+        WHERE order_id=#{orderId}
+    </select>
+</mapper>
